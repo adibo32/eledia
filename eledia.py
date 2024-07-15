@@ -13,9 +13,9 @@ def eledia_text(id, dir):
     def extract_text_from_file(file_path, id):
         with open(file_path, 'r') as file:
             for line in file:
-                text_gesucht = re.text_gesucht(rf'^{id}: (.+)', line)
-                if text_gesucht:
-                    return text_gesucht.group(1)
+                match = re.match(rf'^{id}: (.+)', line)
+                if match:
+                    return match.group(1)
         return None
 
     eledia_files = find_eledia_files(dir)
